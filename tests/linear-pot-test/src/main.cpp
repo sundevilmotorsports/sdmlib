@@ -26,11 +26,7 @@ float sum=0;
 // zero's out the potentiometer
 // i.e., set the zero'd location
 void calibrate(int samples){
-    
-    using std::vector;
-    static vector<float> values(samples);
     for (int i = 0; i < samples; i++){
-        values.insert(values.begin(), get());
         sum = sum+get();
     }
     zeroValue = sum/samples;

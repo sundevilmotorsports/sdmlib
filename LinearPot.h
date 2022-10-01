@@ -10,10 +10,13 @@ class LinearPot : public Sensor {
     void reset();
     float get();
     int getRaw();
+    float getDisplacement();
     String toString();
 
     protected:
     int pin;
     float avg;
     float scale;
+    float zeroValue = 0.0;
+    float sum=0;
 };

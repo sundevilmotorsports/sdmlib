@@ -5,6 +5,11 @@ LinearPot::LinearPot(){
 }
 
 int LinearPot::calibrate(int samples){
+
+    for (int i = 0; i < samples; i++){
+        sum = sum+get();
+    }
+    zeroValue = sum/samples;
     return 0;
 }
 
@@ -21,9 +26,17 @@ int LinearPot::getRaw(){
     return analogRead(pin);
 }
 
+float LinearPot::getDisplacement(){
+    float displacement = get();
+    displacement = zeroValue - displacement;
+    return displacement;
+}
+
 void LinearPot::reset(){
 
 }
+
+
 
 String LinearPot::toString(){
     return "temp";
