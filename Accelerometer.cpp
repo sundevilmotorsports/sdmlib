@@ -5,7 +5,22 @@ Accelerometer::Accelerometer(){
 
 }
 
-void Accelerometer::set(Axis axis, const int pin, float bias, float rate){
+void Accelerometer::initialize(){
+
+}
+
+void Accelerometer::reset(){
+
+}
+
+float Accelerometer::get(){
+    return 0.0;
+}
+int Accelerometer::calibrate(int samples){
+    return 0;
+}
+
+void Accelerometer::set(Accelerometer::Axis axis, const int pin, float bias, float rate){
     switch(axis){
         case Accelerometer::Axis::X:
         settingsX.pin = pin;
@@ -35,19 +50,19 @@ float Accelerometer::calculateAcceleration(Axis axis){
     float bias, rate;
     switch(axis){
         case Accelerometer::Axis::X:
-        pin = pinX;
-        bias = biasX;
-        rate = rateX;
+        pin = settingsX.pin;
+        bias = settingsX.bias;
+        rate = settingsX.rate;
         break;
         case Accelerometer::Axis::Y:
-        pin = pinY;
-        bias = biasY;
-        rate = rateY;
+        pin = settingsY.pin;
+        bias = settingsY.bias;
+        rate = settingsY.rate;
         break;
         case Accelerometer::Axis::Z:
-        pin = pinZ;
-        bias = biasZ;
-        rate = rateZ;
+        pin = settingsZ.pin;
+        bias = settingsZ.bias;
+        rate = settingsZ.rate;
         break;
         default:
         return 0.0;
@@ -55,4 +70,14 @@ float Accelerometer::calculateAcceleration(Axis axis){
     // TODO double check this math
     // dunno about the - 3.3/2
     return bias + ((analogRead(pin)/RESOLUTION_3V3 * 3.3 - 3.3/2) / rate);
+}
+
+String Accelerometer::toString(){
+    String output = "";
+    String xOutput = String(calculateAcceleration(Accelerometer::Axis::X), 3);
+    String yOutput = String(calculateAcceleration(Accelerometer::Axis::Y), 3);
+    String zOutput = String(calculateAcceleration(Accelerometer::Axis::Z), 3);
+
+    output = "X: " + xOutput + "\tY: " + yOutput + "\tZ: " + zOutput;
+    return output;
 }

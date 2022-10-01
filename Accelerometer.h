@@ -6,7 +6,7 @@
 #define RESOLUTION_3V3 1023.0
 
 typedef struct AccelerometerSettings_s_t {
-    const int pin;
+    int pin;
     float bias;
     float rate;
     float avg;
@@ -14,10 +14,18 @@ typedef struct AccelerometerSettings_s_t {
 
 class Accelerometer : public Sensor {
     public:
+
+    enum Axis {
+        X,
+        Y,
+        Z
+    };
+
+
     Accelerometer(); // TODO
     Accelerometer(int pinX, int pinY, int pinZ); // calibrate 
     void initialize();
-    void calibrate();
+    int calibrate(int samples);
     void reset();
     void set(Axis axis, const int pin, float bias, float rate);
 
@@ -32,14 +40,10 @@ class Accelerometer : public Sensor {
     float getZ();
     String toString();
 
-    enum Axis {
-        X,
-        Y,
-        Z
-    };
+    // TODO: this should be protected
+    float calculateAcceleration(Axis axis);
 
     protected:
-    float calculateAcceleration(Axis axis);
     // pins
     // tuning constants
     // biases
