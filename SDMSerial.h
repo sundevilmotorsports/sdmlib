@@ -20,6 +20,8 @@ class SDMSerial {
     // sends a message on the specified port
     bool send(int port, SDMSerial::PacketType, String message);
 
+    bool sendSpeedDamper(int port, int damper, bool  wheelMagnet);
+
     // returns true if there is a message ready, and the vector is a list of ports that are ready
     std::pair<bool, std::vector<int>> isMessageReady();
 
