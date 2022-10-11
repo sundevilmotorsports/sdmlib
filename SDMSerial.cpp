@@ -110,7 +110,7 @@ bool SDMSerial::send(int port, SDMSerial::PacketType type, String message){
     }
     return true;
 }
-
+/*
 bool SDMSerial::sendSpeedDamper(int port, int damper, bool wheelMagnet) {
 
     bitset<8> data(damper>>1);
@@ -144,6 +144,7 @@ bool SDMSerial::sendSpeedDamper(int port, int damper, bool wheelMagnet) {
     return true;
 
 }
+*/
 
 std::pair<bool, std::vector<int>> SDMSerial::isMessageReady(){
     bool isReady = false;

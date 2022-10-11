@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <utility>
+#include <bitset>
 #include <Arduino.h>
 
 class SDMSerial {
