@@ -9,8 +9,10 @@ class SDMCAN {
         RotationData, //id  = 361
         YawProbeData, // air speed, yaw angle, id = 362
         AnglePressureHeightData, // front brake pressure, rear brake pressure, id = 363
-        FrontLeftData, // Damper Travel, Wheel Speed, Brake Rotor Temperature, Push Rod Load, id = 364
-        FrontRightData // Damper Travel, Wheel Speed, Brake Rotor Temperature, Push Rod Load, id = 365
+        // Damper Travel, Wheel Speed, Brake Rotor Temperature, Push Rod Load
+        // for both
+        FrontLeftData, // id = 364
+        FrontRightData // id = 365
     };
     FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> Can0;
     
