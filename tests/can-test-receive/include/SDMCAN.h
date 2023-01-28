@@ -5,7 +5,7 @@ class SDMCAN {
 
     public: 
     enum CANData {
-        AccelData, //id = 360
+        AccelerationData, //id = 360
         RotationData, //id  = 361
         YawProbeData, // air speed, yaw angle, id = 362
         AnglePressureHeightData, // front brake pressure, rear brake pressure, id = 363
@@ -14,10 +14,10 @@ class SDMCAN {
         FrontLeftData, // id = 364
         FrontRightData // id = 365
     };
-    FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> Can0;
+    FlexCAN_T4<CAN3, RX_SIZE_256, TX_SIZE_16> Can0;
     
     SDMCAN();   
-    SDMCAN(FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> CAN);   
+    SDMCAN(FlexCAN_T4<CAN3, RX_SIZE_256, TX_SIZE_16> CAN);   
     void send(CANData type, std::vector<float> data);
     std::vector<float> recieve(CAN_message_t message);
 };

@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"name": "can-test-send",
+			"path": "../../can-test-send"
+		},
+		{
+			"name": "can-test-receive",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"vector": "cpp",
+			"iosfwd": "cpp",
+			"*.tpp": "cpp"
+		}
+	}
+}
